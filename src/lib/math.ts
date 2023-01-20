@@ -16,3 +16,11 @@ export function randomInt (max: number): number {
 export function randomEntry <T> (list: T[]): T {
   return list[randomInt(list.length)]
 }
+
+export function toInt (input: any): number {
+  if (input === null || input === undefined || input === false) return 0
+  if (input === true) return 1
+  if (typeof input === 'number') return input | 0
+  if (typeof input !== 'string') return 0
+  return parseInt(input, 10)
+}

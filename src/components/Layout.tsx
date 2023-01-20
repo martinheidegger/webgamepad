@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router'
-import { useGamepads } from '../hooks/useGamepads'
-import { gradients } from '../lib/gradients'
-import { Eyes } from './Eyes'
+import { useGamepads } from '../hooks/useGamepads.js'
+import { gradients } from '../lib/gradients.js'
+import { Eyes } from './Eyes.js'
 
 const eyePath = `
   M -101.0,   0.0
@@ -15,6 +15,13 @@ const eyePath = `
 export function Layout (): JSX.Element {
   const gamepads = useGamepads()
   return <>
+    <div className="presentation">
+      <Outlet />
+      <div className="all-eyes">
+        {gamepads.length === 0 ? <div className="no-gamepads">No Gamepads connected!</div> : null}
+        {gamepads.map(index => <Eyes className='eyes' key={`gamepad-${index}`} index={index}/>)}
+      </div>
+    </div>
     <svg width="0" height="0"><defs>
       <rect id='eye-bg' x={-150} y={-150} width={300} height={300} fill="white"/>
       <path id='eye-shape' d={eyePath} fill="white" />
@@ -26,12 +33,5 @@ export function Layout (): JSX.Element {
         </radialGradient>
       )}
     </defs></svg>
-    <div className="presentation">
-      <Outlet />
-      <div className="all-eyes">
-        {gamepads.length === 0 ? <div className="no-gamepads">No Gamepads connected!</div> : null}
-        {gamepads.map(index => <Eyes className='eyes' key={`gamepad-${index}`} index={index}/>)}
-      </div>
-    </div>
   </>
 }

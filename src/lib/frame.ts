@@ -1,4 +1,4 @@
-import { approach } from './math'
+import { approach } from './math.js'
 
 export function press () {
   let state = false
