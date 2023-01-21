@@ -22,10 +22,10 @@ export function mode <T> (): (newMode: T | undefined) => T | undefined {
   }
 }
 
-export function approachValue (value: number): (target: { axis: number, value: number }) => number {
+export function approachValue (value: number, factor: number = 0.5, threshold: number = 0.001): (target: { axis?: number, value?: number }) => number {
   return (target) => {
     if (target.axis !== undefined) return (target.axis + 1.0) / 2.0
-    value = approach(value, target.value ?? 0)
+    value = approach(value, target.value ?? 0, factor, threshold)
     return value
   }
 }

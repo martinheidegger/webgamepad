@@ -5,6 +5,7 @@ import style from 'react-syntax-highlighter/dist/esm/styles/prism/material-light
 import remarkDirective from 'remark-directive'
 import remarkDirectiveRehype from 'remark-directive-rehype'
 import remarkGfm from 'remark-gfm'
+import remarkImages from 'remark-images'
 import { GamepadAxis } from '../components/GamepadAxis.js'
 import { GamepadAxis2D } from '../components/GamepadAxis2D.js'
 import { GamepadButton } from '../components/GamepadButton.js'
@@ -15,6 +16,7 @@ import { WindowEvent } from '../components/WindowEvent.js'
 const config: Partial<Parameters<typeof ReactMarkdown>[0]> = {
   remarkPlugins: [
     remarkGfm,
+    remarkImages,
     remarkDirective,
     remarkDirectiveRehype
   ],

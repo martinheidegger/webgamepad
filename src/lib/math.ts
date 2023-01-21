@@ -1,4 +1,4 @@
-export function approach (prev: number | undefined, target: number, threshold: number = 0.001, factor: number = 0.5): number {
+export function approach (prev: number | undefined, target: number, factor: number = 0.5, threshold: number = 0.001): number {
   if (prev === undefined) {
     return target
   }

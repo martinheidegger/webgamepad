@@ -8,6 +8,16 @@ export interface GamepadStatsProps {
   index: number | string | undefined
 }
 
+function sliced <T> (input: readonly T[], items: number): T[][] {
+  const result: T[][] = []
+  for (let start = 0; start < input.length;) {
+    let end = start + items
+    result.push(input.slice(start, end))
+    start = end
+  }
+  return result
+}
+
 function GamepadStat (gamepad: Gamepad | null | undefined, index: number): JSX.Element {
   if (!gamepad) {
     return <div className="gamepad" key={`gamepad-${index}`}>
@@ -24,17 +34,17 @@ function GamepadStat (gamepad: Gamepad | null | undefined, index: number): JSX.E
     return pairs
   }, [] as [x: number, y: number][])
   return <div className="gamepad" key={`gamepad-${index}`}>
-    <dl>
-      <dt>id</dt>
-      <dd>{gamepad.id}</dd>
-      <dt>timestamp</dt>
-      <dd>{gamepad.timestamp}</dd>
-    </dl>
-    <div className="gamepad-axes">
-      {axes.map(([x, y], index) => <div className="gamepad-axis2d" key={`axis-2d-${index}`}>{Axis2D({ x, y })}</div>)}
-    </div>
-    <div className="gamepad-buttons">
-      {gamepad.buttons.map(({value}, index) => <div className="gamepad-button" key={`button-${index}`}>{Normal({ value })}</div>)}
+    <h3>{gamepad.id}</h3>
+    <sub>{gamepad.timestamp}</sub>
+    <div className="gamepad-items">
+      <div className="gamepad-axis">
+        {axes.map(([x, y], index) => <div className="gamepad-axis2d" key={`axis-2d-${index}`}>{Axis2D({ x, y })}</div>)}
+      </div>
+      <div className="gamepad-buttons">
+        {sliced(gamepad.buttons, 5).map(buttons => <div className="gamepad-buttonGroup">
+          {buttons.map((btn, index) => <div className="gamepad-button" key={`button-${index}`}>{Normal(btn)}</div>)}
+        </div>)}
+      </div>
     </div>
   </div>
 }

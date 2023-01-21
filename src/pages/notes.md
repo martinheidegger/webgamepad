@@ -6,11 +6,11 @@
 
 >>>
 
-## Why?
+# Why?
 
 >>>
 
-## Todays plan
+# Todays plan
 
 - [ ] How does the API work?
 - [ ] What bugs are there?
@@ -214,7 +214,6 @@ Mozilla vetoed this!
 - hdiapi
 - libhid
 - hidcode spec
-- 
 
 
 >>>
@@ -231,5 +230,6 @@ Mozilla vetoed this!
 
 ## One Last thing!
 
-Did you know that it works on tablets?
+Did you know that it works on tablets and phones?
 
+::img{src=./qr-code.png style=width:6em}

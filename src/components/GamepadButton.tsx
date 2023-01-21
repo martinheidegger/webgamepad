@@ -11,5 +11,5 @@ export function GamepadButton ({ index, button }: GamepadButtonProps): JSX.Eleme
   useAnimationFrame()
   const gamepad = navigator.getGamepads()[toInt(index)]
   const btn = gamepad?.buttons[toInt(button)]
-  return Normal({ value: btn?.value })
+  return Normal(btn ?? { value: 0 })
 }
