@@ -224,6 +224,8 @@ Mozilla vetoed this!
 - [ ] Try to hack together an extended Gamepad API using `hid`
 - [ ] Demand First class support for controllers!
 - [ ] Report bugs...
+- [ ] Add API to nodejs/deno
+- [ ] Publish SDL DB to npm
 
 
 >>>
